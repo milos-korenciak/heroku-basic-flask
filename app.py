@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, request, send_from_directory
 from datetime import datetime
-app = Flask(__name__)
+# set the project root directory as the static folder, you can set others.app = Flask(__name__, static_url_path='')
 import os
+
+# credits to https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
 
 @app.route('/')
 def homepage():
@@ -19,6 +21,10 @@ def homepage():
     <img src="http://loremflickr.com/600/400" />
     """.format(time=the_time, file_paths=file_paths)
 
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('.', path)
+    
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
