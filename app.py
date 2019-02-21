@@ -1,10 +1,12 @@
 from flask import Flask, request, send_from_directory
 from datetime import datetime
-# set the project root directory as the static folder, you can set others.app = Flask(__name__, static_url_path='')
 import os
 from pprint import pprint
 # credits to https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
 import subprocess
+
+# set the project root directory as the static folder, you can set others
+app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def homepage():
