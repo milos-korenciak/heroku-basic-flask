@@ -1,6 +1,7 @@
 from flask import Flask, request, send_from_directory
 from datetime import datetime
 import os
+import sys
 from pprint import pprint
 # credits to https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
 import subprocess
@@ -34,9 +35,9 @@ def send_static(path):
 def compile():
     text = "OK."
     try:
-        subprocess.call(["xelatex", "--shell-escape", "-synctex=1",
+        subprocess.run(["xelatex", "--shell-escape", "-synctex=1",
                          "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
-                    shell=True)
+                    shell=True, stdout=sys.stderr, stderr=sys.stderr)
     except Exception as e:
         text = "type: %s, error: %s"%(type(e), e)
     return text
