@@ -2,8 +2,9 @@ from flask import Flask, request, send_from_directory
 from datetime import datetime
 # set the project root directory as the static folder, you can set others.app = Flask(__name__, static_url_path='')
 import os
-
+from pprint import pprint
 # credits to https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
+import subprocess
 
 @app.route('/')
 def homepage():
@@ -16,15 +17,28 @@ def homepage():
     return """
     <h1>Hello heroku</h1>
     <p>It is currently {time}.</p>
+    <p>The env: {environ}.</p>
     <p>{file_paths}</p>
     
     <img src="http://loremflickr.com/600/400" />
-    """.format(time=the_time, file_paths=file_paths)
+    """.format(time=the_time, file_paths=file_paths, environ=pprint(dict(os.environ)))
 
 @app.route('/static/<path:path>')
 def send_static(path):
     return send_from_directory('.', path)
     
+
+@app.route('/compile')
+def compile():
+    text = "OK."
+    try:
+        subprocess.call(["xelatex", "--shell-escape", "-synctex=1",
+                         "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
+                    shell=True)
+    except Exception as e:
+        text = "type: %s, error: %s"%(type(e), e)
+    return text
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
