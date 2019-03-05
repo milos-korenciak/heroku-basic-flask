@@ -20,11 +20,13 @@ def homepage():
     return """
     <h1>Hello heroku</h1>
     <p>It is currently {time}.</p>
+    <p>pwd {pwd}.</p>
     <p>The env: {environ}.</p>
+    <h3>files in .:</h3>
     <p>{file_paths}</p>
     
     <img src="http://loremflickr.com/600/400" />
-    """.format(time=the_time, file_paths=file_paths, environ=pprint(dict(os.environ)))
+    """.format(time=the_time, file_paths=file_paths, pwd=os.path.abspath("."), environ=pprint(dict(os.environ)))
 
 @app.route('/static/<path:path>')
 def send_static(path):
