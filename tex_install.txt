@@ -1,6 +1,6 @@
 booktabs
 caption
-collection-latex  # contains keyval
+collection-latex
 collection-xetex
 datetime
 enumitem
