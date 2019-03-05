@@ -37,11 +37,13 @@ def send_static(path):
 def compile():
     text = "OK."
     try:
-        subprocess.run(["xelatex", "--shell-escape", "-synctex=1",
-                         "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
-                    shell=True, stdout=sys.stderr, stderr=sys.stderr)
+        output = subprocess.run(["xelatex", "--shell-escape", "-synctex=1",
+                                 "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
+                                shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        text += "\nReturn code: %s\n" % output.returncode
+        text += output.stdout
     except Exception as e:
-        text = "type: %s, error: %s"%(type(e), e)
+        text = "type: %s, error: %s" % (type(e), e)
     return text
 
 if __name__ == '__main__':
