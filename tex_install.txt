@@ -9,8 +9,8 @@ fmtcount
 fontspec
 graphics
 geometry
-keyval
 koma-script
+latex-graphics
 lastpage
 multirow
 needspace
