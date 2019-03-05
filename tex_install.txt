@@ -1,6 +1,6 @@
 booktabs
 caption
-collection-latex
+collection-latex  # contains keyval
 collection-xetex
 datetime
 enumitem
@@ -10,7 +10,6 @@ fmtcount
 fontspec
 graphics
 geometry
-keyval
 koma-script
 lastpage
 multirow
