@@ -1,6 +1,7 @@
 booktabs
 caption
 collection-latex
+collection-xetex
 datetime
 enumitem
 etoolbox
