@@ -41,7 +41,7 @@ def compile():
                                  "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
                                 shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         text += "\nReturn code: %s\n" % output.returncode
-        text += output.stdout
+        text += output.stdout.decode()
     except Exception as e:
         text = "type: %s, error: %s" % (type(e), e)
     return text
