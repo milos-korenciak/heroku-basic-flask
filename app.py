@@ -31,7 +31,6 @@ def homepage():
 @app.route('/static/<path:path>')
 def send_static(path):
     return send_from_directory('.', path)
-    
 
 @app.route('/compile')
 def compile():
@@ -39,7 +38,7 @@ def compile():
     try:
         output = subprocess.run(["/app/buildpack/bin/x86_64-linux/xelatex", "--shell-escape", "-synctex=1",
                                  "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
-                                shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=None)
         text += "\nReturn code: %s\n" % output.returncode
         text += output.stdout.decode()
     except Exception as e:
