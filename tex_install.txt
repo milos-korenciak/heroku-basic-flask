@@ -1,1 +1,1 @@
-cjk xecjk booktabs caption collection-latex collection-xetex datetime enumitem etoolbox float fmtcount fontspec graphics geometry koma-script lastpage multirow needspace polyglossia tabu titlesec varwidth xcolor xkeyval
+ctex cjk xecjk booktabs caption collection-latex collection-xetex datetime enumitem etoolbox float fmtcount fontspec graphics geometry koma-script lastpage multirow needspace polyglossia tabu titlesec varwidth xcolor xkeyval
