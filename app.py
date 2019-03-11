@@ -2,7 +2,7 @@ from flask import Flask, request, send_from_directory
 from datetime import datetime
 import os
 import sys
-from pprint import pprint
+from pprint import pformat
 # credits to https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
 import subprocess
 
@@ -26,7 +26,7 @@ def homepage():
     <p>{file_paths}</p>
     
     <img src="http://loremflickr.com/600/400" />
-    """.format(time=the_time, file_paths=file_paths, pwd=os.path.abspath("."), environ=pprint(dict(os.environ)))
+    """.format(time=the_time, file_paths=file_paths, pwd=os.path.abspath("."), environ=pformat(dict(os.environ)))
 
 @app.route('/static/<path:path>')
 def send_static(path):
