@@ -36,8 +36,8 @@ def send_static(path):
 def compile():
     text = "OK."
     try:
-        output = subprocess.run(["/app/buildpack/bin/x86_64-linux/xelatex", "--shell-escape", "-synctex=1",
-                                 "-interaction=nonstopmode", "/app/buildpack/bin/x86_64-linux/test.tex"],
+        output = subprocess.run(["/app/TeXLive/bin/x86_64-linux/xelatex", "--shell-escape", "-synctex=1",
+                                 "-interaction=nonstopmode", "/app/TeXLive/bin/x86_64-linux/test.tex"],
                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=None)
         text += "\nReturn code: %s\n" % output.returncode
         text += output.stdout.decode()
