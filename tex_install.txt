@@ -1,2 +1,2 @@
-booktabs caption collection-latex collection-xetex datetime enumitem etoolbox float fmtcount fontspec graphics geometry koma-script lastpage multirow needspace polyglossia tabu titlesec varwidth xcolor xkeyval roboto
+booktabs caption collection-latex collection-xetex datetime enumitem etoolbox float fmtcount fontspec graphics geometry koma-script lastpage multirow needspace polyglossia tabu titlesec varwidth xcolor xkeyval roboto colortbl 
 ctex cjk xecjk ms ulem environ zhnumber trimspaces noto 
